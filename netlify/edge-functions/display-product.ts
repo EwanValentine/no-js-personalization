@@ -21,8 +21,8 @@ export default async (request: Request, context: Context) => {
   endpoint.pathname = '/api/products';
 
   console.log({ endpoint });
-
-  const res = await fetch(endpoint.toString());
+  
+  const res = await context.rewrite(endpoint.pathname);
 
   if (!res.ok) {
     return;
